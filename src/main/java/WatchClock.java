@@ -1,5 +1,3 @@
-import java.awt.font.TextHitInfo;
-
 public class WatchClock {
     String state = "NORMAL";
     String ActState = "TIME";
@@ -61,7 +59,10 @@ public class WatchClock {
                 } else return;
                 break;
             case "ALARM":
-                if (option.equals("a") && this.ActState.equals("ALARM")) this.ActState = "CHIME";
+                if (option.equals("a") && this.ActState.equals("ALARM")) {
+                    this.ActState = "CHIME";
+                    this.alarm = true;
+                }
                 else if (option.equals("d")) {
                     this.ActState = "TIME";
                     this.state = "NORMAL";
@@ -71,8 +72,8 @@ public class WatchClock {
     }
 
     public void GetData(){
-        System.out.println(this.state);
-        System.out.println(this.ActState);
+        System.out.println("Current Display: "+this.state);
+        System.out.println("Current State: "+this.ActState);
         String time = "";
         if (Integer.toString(this.hour).length() != 2) time+= "0" + Integer.toString(this.hour);
         else time+= Integer.toString(this.hour);
